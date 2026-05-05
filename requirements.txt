@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+openai
+faiss-cpu
+pypdf
+pydantic
+streamlit
+python-dotenv
+numpy
+requests
+gensim

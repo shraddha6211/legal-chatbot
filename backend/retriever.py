@@ -116,7 +116,7 @@ def expand_query(question):
     clean_question = remove_stopwords(question)
 
     # step 4: return cleaned question
-    return enrich_query(clean_question)
+    return clean_question.strip()
 
 def enrich_query(clean_question):
     # call GPT to generate related legal terms

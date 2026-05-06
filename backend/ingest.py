@@ -1,4 +1,5 @@
 import os
+import re
 import numpy as np
 import faiss
 import pickle
@@ -8,6 +9,17 @@ from pypdf import PdfReader
 
 load_dotenv()
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+
+def clean_text(text):
+    # fix broken words with spaces (e.g. "eq uality" → "equality")
+    
+    # fix multiple spaces
+    text = re.sub(r' +', ' ', text)
+    
+    # fix newlines
+    text = re.sub(r'\n+', '\n', text)
+    
+    return text
 
 def load_pdf(filepath):
     # with(open, %r, "constitutin.pdf"):
@@ -52,17 +64,6 @@ def load_pdf(filepath):
 
 ## RECURSIVE CHUNKING DOESN'T WORK AS EXPECTED
 
-def clean_text(text):
-    # fix broken words with spaces (e.g. "eq uality" → "equality")
-    
-    # fix multiple spaces
-    text = re.sub(r' +', ' ', text)
-    
-    # fix newlines
-    text = re.sub(r'\n+', '\n', text)
-    
-    return text
-
 # def chunk_text(text):
     # split at article boundaries like "18." or "19."
     # pattern: number + period + space at start of section
@@ -105,9 +106,6 @@ def chunk_text(text, chunk_size=500, overlap=50):
     return chunks
 
 ### CHUNKING BY ARTICLE
-
-import re
-
 
 def is_meaningful_chunk(chunk, min_length=200):
     """

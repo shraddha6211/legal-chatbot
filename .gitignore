@@ -1,1 +1,61 @@
 .env
+# 🔹 Python bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# 🔹 Virtual environments
+venv/
+env/
+ENV/
+.venv/
+
+# 🔹 Environment variables
+.env
+.env.*
+
+# 🔹 Jupyter Notebook
+.ipynb_checkpoints/
+
+# 🔹 Logs
+*.log
+
+# 🔹 OS files
+.DS_Store
+Thumbs.db
+
+# 🔹 IDE / Editor
+.vscode/
+.idea/
+
+# 🔹 Build / distribution
+build/
+dist/
+*.egg-info/
+
+# 🔹 Testing
+.coverage
+htmlcov/
+.pytest_cache/
+
+# 🔹 FastAPI / Uvicorn
+*.sqlite3
+
+# 🔹 ML / RAG specific (IMPORTANT for your project)
+*.pkl
+*.joblib
+*.index
+*.faiss
+
+# 🔹 Temporary files
+*.tmp
+*.bak
+
+# 🔹 C extensions
+*.so
+
+# 🔹 mypy / type checking
+.mypy_cache/
+
+# 🔹 coverage reports
+coverage.xml
